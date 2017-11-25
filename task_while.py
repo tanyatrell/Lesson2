@@ -9,11 +9,21 @@ names_list = ["Вася", "Маша", "Петя", "Валера", "Саша", "�
 
 
 for i in names_list:
-	if i == 'Валера':
-		print('Валера нашелся')
-		names_list.pop(3)
-		break
+    if i == 'Валера':
+        print('Валера нашелся')
+        names_list.pop(3)
+        break
 
-#def find_name(a_list):
-	#pass
+names_list = ["Вася", "Маша", "Петя", "Валера", "Саша", "Даша"] 
 
+def find_name(name):
+    name = str(name)
+    for i in names_list:
+        if i == name:
+            print('Нашелся')
+            name_index = names_list.index(name)
+            names_list.pop(name_index)
+            break   
+
+result = find_name('Саша')
+print(names_list)
