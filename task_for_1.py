@@ -13,19 +13,25 @@ all_scores = [
 
 result_school = 0 
 sum_classes = 0
+all_scores_sum = 0
 result = 0
+len_list = 0
 
-def avr_list(a_list):
+def sum_list(a_list):
     a_sum = 0
     for l in a_list:
         a_sum = a_sum + l
-    return a_sum/len(a_list)
+    return a_sum
 
-for each in all_scores:
-    result = avr_list(each.get('scores'))
-    sum_classes = sum_classes + result
-    print('Средняя по классу {}: {}'.format(each.get('school_class'),result))
+for m in all_scores:
+    new_list = m.get('scores')
+    result = sum_list(new_list)/len(new_list)
+    len_list = len_list + len(new_list)
+    all_scores_sum = all_scores_sum + sum_list(new_list)
+    print('Средняя по классу {}: {}'.format(m.get('school_class'),result))
+    
 
-result_school = round(sum_classes/3, 1)
+
+result_school = round(all_scores_sum/len_list, 1)
 print('Средняя по школе: {}'.format(result_school))
 

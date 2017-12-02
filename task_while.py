@@ -2,28 +2,30 @@
 пока не встретите имя "Валера". Когда найдете напишите "Валера нашелся". 
 Подсказка: используйте метод list.pop()
 Перепишите предыдущий пример в виде функции find_person(name), которая ищет имя в списке.
-Написать функцию ask_user() чтобы с помощью input() спрашивать пользователя “Как дела?”, пока он не ответит “Хорошо”
-При помощи функции get_answer() отвечать на вопросы пользователя в ask_user(), пока он не скажет “Пока!”'''
+'''
 
 names_list = ["Вася", "Маша", "Петя", "Валера", "Саша", "Даша"] 
 
+from copy import copy
+names_copy = copy(names_list)
 
-for i in names_list:
-    if i == 'Валера':
+while names_copy:
+    current_name = names_copy.pop()
+    if current_name == 'Валера':
         print('Валера нашелся')
-        names_list.pop(3)
         break
 
 names_list = ["Вася", "Маша", "Петя", "Валера", "Саша", "Даша"] 
+from copy import copy
+names_copy = copy(names_list)   
 
 def find_name(name):
-    name = str(name)
-    for i in names_list:
-        if i == name:
-            print('Нашелся')
-            name_index = names_list.index(name)
-            names_list.pop(name_index)
-            break   
+    while names_copy:
+        current_name = names_copy.pop()
+        if current_name == name:
+            print('{} нашелся'.format(name))
+            break
+
 
 result = find_name('Саша')
-print(names_list)
+print(names_copy)
